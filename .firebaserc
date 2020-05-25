@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "ogshop-e5134": {
+      "hosting": {
+        "ogshop": [
+          "ogshop-e5134"
+        ]
+      }
+    }
+  }
+}
