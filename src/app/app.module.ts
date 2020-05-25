@@ -41,8 +41,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     NgbModule,
-    //NgbDropdownModule.forRoot(),
-    //NgbDropdownModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'login', component: LoginComponent },
