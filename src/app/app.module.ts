@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -16,7 +16,6 @@ import { AdminProductComponent } from './admin/admin-product/admin-product.compo
 import { AdminOrderComponent } from './admin/admin-order/admin-order.component';
 import { HomeComponent } from './home/home.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { from } from 'rxjs';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { environment } from 'src/environments/environment';
 import { NotFoundComponent } from './not-found/not-found.component';
@@ -42,6 +41,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     NgbModule,
+    //NgbDropdownModule.forRoot(),
+    //NgbDropdownModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'login', component: LoginComponent },
