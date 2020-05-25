@@ -6,15 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-
-  isShownList: boolean = false;
   constructor() { }
 
   ngOnInit() {
-  }
-
-  onOpenMenu() {
-    this.isShownList = !this.isShownList;
   }
 
 }
