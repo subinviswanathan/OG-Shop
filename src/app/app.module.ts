@@ -21,6 +21,8 @@ import { environment } from 'src/environments/environment';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthGuard } from './auth-guard.service';
 import { AuthAdminGuard } from './auth-admin-guard.service';
+import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -35,10 +37,12 @@ import { AuthAdminGuard } from './auth-admin-guard.service';
     HomeComponent,
     NavBarComponent,
     ShoppingCartComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ProductFormComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
@@ -61,6 +65,11 @@ import { AuthAdminGuard } from './auth-admin-guard.service';
       {
         path: 'admin/products',
         component: AdminProductComponent,
+        canActivate: [AuthGuard, AuthAdminGuard]
+      },
+      {
+        path: 'admin/products/new',
+        component: ProductFormComponent,
         canActivate: [AuthGuard, AuthAdminGuard]
       },
       { path: '**', component: NotFoundComponent }
