@@ -9,6 +9,7 @@ import { AppUser } from '../models/app-user';
 })
 export class NavBarComponent {
   appUser: AppUser;
+  isMenuCollapsed = true;
   constructor(public _auth: AuthService) {
     _auth.appUser$
       .subscribe(user => this.appUser = user);
