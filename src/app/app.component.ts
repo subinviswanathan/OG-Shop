@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +11,10 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'ogshop';
 
-  constructor(private _auth: AuthService, private _router: Router) {
+  constructor(private _auth: AuthService, private _router: Router, private _userService: UserService) {
     _auth.user$.subscribe(user => {
       if (user) {
+        _userService.save(user);
         let returnUrl = localStorage.returnUrl;
         _router.navigateByUrl(returnUrl);
       }

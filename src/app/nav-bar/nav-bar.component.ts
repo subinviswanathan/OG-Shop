@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { AppUser } from '../models/app-user';
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,7 +8,11 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent {
-  constructor(public _auth: AuthService) { }
+  appUser: AppUser;
+  constructor(public _auth: AuthService) {
+    _auth.appUser$
+      .subscribe(user => this.appUser = user);
+  }
 
   logout() {
     this._auth.logout();

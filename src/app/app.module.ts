@@ -20,6 +20,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { environment } from 'src/environments/environment';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthGuard } from './auth-guard.service';
+import { AuthAdminGuard } from './auth-admin-guard.service';
 
 @NgModule({
   declarations: [
@@ -51,9 +52,17 @@ import { AuthGuard } from './auth-guard.service';
       { path: 'shopping-cart', component: ShoppingCartComponent },
       { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
       { path: 'success', component: OrderSuccessComponent, canActivate: [AuthGuard] },
-      
-      { path: 'admin/orders', component: AdminOrderComponent, canActivate: [AuthGuard] },
-      { path: 'admin/products', component: AdminProductComponent, canActivate: [AuthGuard] },
+
+      {
+        path: 'admin/orders',
+        component: AdminOrderComponent,
+        canActivate: [AuthGuard, AuthAdminGuard]
+      },
+      {
+        path: 'admin/products',
+        component: AdminProductComponent,
+        canActivate: [AuthGuard, AuthAdminGuard]
+      },
       { path: '**', component: NotFoundComponent }
     ])
   ],
