@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductService } from 'src/app/product.service';
 import { Subscription } from 'rxjs';
+import { Product } from 'src/app/models/product';
 
 @Component({
   selector: 'app-admin-product',
@@ -9,12 +10,12 @@ import { Subscription } from 'rxjs';
 })
 export class AdminProductComponent implements OnInit, OnDestroy {
 
-  products = [];
-  filteredProducts = [];
+  products: Product[] = [];
+  filteredProducts: Product[] = [];
   subscription: Subscription;
 
   constructor(private _productService: ProductService) {
-    this.subscription = _productService.getAll()
+    this.subscription = this._productService.getAll()
       .subscribe(products => this.filteredProducts = this.products = products);
   }
 
