@@ -24,6 +24,8 @@ import { AuthAdminGuard } from './auth-admin-guard.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { FormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { ProductFilterComponent } from './product/product-filter/product-filter.component';
+import { ProductCardComponent } from './product-card/product-card.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     NavBarComponent,
     ShoppingCartComponent,
     NotFoundComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    ProductFilterComponent,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +53,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     AngularFireAuthModule,
     NgbModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent },
+      { path: '', component: ProductComponent },
       { path: 'login', component: LoginComponent },
       { path: 'my-order', component: MyorderComponent },
       { path: 'products', component: ProductComponent },

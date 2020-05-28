@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row mt-3">
     <div class="col-md-6">
         <form #f="ngForm" (ngSubmit)="save(f.value)">
             <div class="form-group">
@@ -45,12 +45,6 @@
         </form>
     </div>
     <div class="col-md-6">
-        <div class="card" *ngIf="product.title" style="width: 18rem;">
-            <img [src]="product.imageUrl" *ngIf="product.imageUrl" class="card-img-top" [alt]="product.title">
-            <div class="card-body">
-                <h5 class="card-title">{{product.title}}</h5>
-                <p class="card-text">{{product.price | currency:'INR'}}</p>
-            </div>
-        </div>
+        <app-product-card [product]="product" [show-actions]="false"></app-product-card>
     </div>
 </div>
