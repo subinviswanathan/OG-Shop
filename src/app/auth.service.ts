@@ -25,6 +25,7 @@ export class AuthService {
   login() {
     let returnUrl = this._route.snapshot.queryParamMap.get('returnUrl') || '';
     localStorage.returnUrl = returnUrl;
+    this._router.navigate(['/']);
 
     this._fireAuth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
   }

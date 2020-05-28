@@ -19,4 +19,16 @@ export class ProductService {
         map(changes => changes.map(product => ({ key: product.payload.key, ...product.payload.val() as object })))
       );
   }
+
+  getProduct(id) {
+    return this._db.object('/products/' + id).valueChanges();
+  }
+
+  updateProduct(id, product) {
+    return this._db.object('/products/' + id).update(product);
+  }
+
+  deleteProduct(id) {
+    return this._db.object('/products/' + id).remove();
+  }
 }

@@ -23,6 +23,7 @@ import { AuthGuard } from './auth-guard.service';
 import { AuthAdminGuard } from './auth-admin-guard.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { FormsModule } from '@angular/forms';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -63,17 +64,23 @@ import { FormsModule } from '@angular/forms';
         canActivate: [AuthGuard, AuthAdminGuard]
       },
       {
-        path: 'admin/products',
-        component: AdminProductComponent,
-        canActivate: [AuthGuard, AuthAdminGuard]
-      },
-      {
         path: 'admin/products/new',
         component: ProductFormComponent,
         canActivate: [AuthGuard, AuthAdminGuard]
       },
+      {
+        path: 'admin/products/:id',
+        component: ProductFormComponent,
+        canActivate: [AuthGuard, AuthAdminGuard]
+      },
+      {
+        path: 'admin/products',
+        component: AdminProductComponent,
+        canActivate: [AuthGuard, AuthAdminGuard]
+      },
       { path: '**', component: NotFoundComponent }
-    ])
+    ]),
+    NoopAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
