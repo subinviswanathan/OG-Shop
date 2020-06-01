@@ -3,6 +3,7 @@ import { AuthService } from '../auth.service';
 import { AppUser } from '../models/app-user';
 import { ShoppingCartService } from '../shopping-cart.service';
 import { ShoppingCart } from '../models/shopping-cart';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-nav-bar',
@@ -12,7 +13,7 @@ import { ShoppingCart } from '../models/shopping-cart';
 export class NavBarComponent implements OnInit {
   appUser: AppUser;
   isMenuCollapsed = true;
-  shoppingCartCount: number;
+  cart$: Observable<ShoppingCart>;
 
   constructor(public _auth: AuthService, private _cartService: ShoppingCartService) {
   }
@@ -20,12 +21,7 @@ export class NavBarComponent implements OnInit {
     this._auth.appUser$
       .subscribe(user => this.appUser = user);
 
-    const cart$ = await this._cartService.getCart();
-    cart$.subscribe((cart: ShoppingCart) => {
-      this.shoppingCartCount = 0;
-      for (let productId in cart.items)
-        this.shoppingCartCount += cart.items[productId].quantity;
-    });
+    this.cart$ = await this._cartService.getCart();
   }
 
   logout() {
