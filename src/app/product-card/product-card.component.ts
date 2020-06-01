@@ -10,6 +10,7 @@ export class ProductCardComponent implements OnInit {
 
   @Input('product') product;
   @Input('show-actions') showActions = true;
+  @Input('shopping-cart') shoppingCart
   constructor(private _cartService: ShoppingCartService) {
   }
 
@@ -18,6 +19,14 @@ export class ProductCardComponent implements OnInit {
 
   addToCart() {
     this._cartService.addToCart(this.product);
+  }
+
+  getQuantity() {
+
+    if (!this.shoppingCart) return;
+    
+    const item = this.shoppingCart.items[this.product.key];
+    return item ? item.quantity : 0;
   }
 
 }

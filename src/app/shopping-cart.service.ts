@@ -28,11 +28,12 @@ export class ShoppingCartService {
       .update({ product, quantity: (quantity) + 1 })
   }
 
-  private getCart(cartId: string) {
+  async getCart() {
+    const cartId = await this.getOrCreateCartId();
     return this._db.object('/shopping-carts/' + cartId).valueChanges();
   }
 
-  private async getOrCreateId() {
+  private async getOrCreateCartId(): Promise<string> {
     const cartId = localStorage.cartId;
     if (cartId) return cartId;
 
@@ -42,7 +43,7 @@ export class ShoppingCartService {
   }
 
   async addToCart(product: Product) {
-    const cartId = await this.getOrCreateId();
+    const cartId = await this.getOrCreateCartId();
 
     let item$ = await this.getItem(cartId, product.key);
     item$.pipe(take(1))
