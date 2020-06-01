@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
-import { AngularFireDatabase } from "@angular/fire/database";
+import { AngularFireDatabase, AngularFireObject } from "@angular/fire/database";
 import { Product } from "./models/product";
 import { take } from "rxjs/operators";
-import { ShoppingCart } from "./models/shopping-cart";
+import { ShoppingCartItem } from './models/shopping-cart-item';
 
 @Injectable({
   providedIn: "root",
@@ -56,6 +56,6 @@ export class ShoppingCartService {
     let item$ = await this.getItem(cartId, product.key);
     item$
       .pipe(take(1))
-      .subscribe((item: ShoppingCart) => this.update(cartId, product, item && item.quantity, change));
+      .subscribe((item: ShoppingCartItem) => this.update(cartId, product, item && item.quantity, change));
   }
 }
