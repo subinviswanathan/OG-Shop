@@ -9,10 +9,6 @@ export class ShoppingCart {
         }
     }
 
-    get productIds() {
-        return Object.keys(this.itemsMap);
-    }
-
     get TotalItemsCount() {
         let count = 0;
         for (let productId in this.itemsMap)
