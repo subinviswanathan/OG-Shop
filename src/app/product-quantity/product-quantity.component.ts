@@ -11,11 +11,7 @@ export class ProductQuantityComponent {
   @Input('product') product;
   @Input('shopping-cart') shoppingCart;
 
-  constructor(private _cartService: ShoppingCartService) {
-  }
-
-  ngOnInit() {
-  }
+  constructor(private _cartService: ShoppingCartService) { }
 
   addToCart() {
     this._cartService.addToCart(this.product);

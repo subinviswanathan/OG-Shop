@@ -7,16 +7,13 @@ import { ShoppingCart } from '../models/shopping-cart';
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.css']
 })
-export class ProductCardComponent implements OnInit {
+export class ProductCardComponent {
 
   @Input('product') product;
   @Input('show-actions') showActions = true;
   @Input('shopping-cart') shoppingCart: ShoppingCart;
-  constructor(private _cartService: ShoppingCartService) {
-  }
 
-  ngOnInit() {
-  }
+  constructor(private _cartService: ShoppingCartService) { }
 
   addToCart() {
     this._cartService.addToCart(this.product);

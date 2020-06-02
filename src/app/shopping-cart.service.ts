@@ -27,7 +27,12 @@ export class ShoppingCartService {
   private update(cartId: string, product: Product, quantity = 0, change = 0) {
     return this._db
       .object("/shopping-carts/" + cartId + "/items/" + product.key)
-      .update({ product, quantity: quantity + change });
+      .update({
+        title: product.title,
+        imageUrl: product.imageUrl,
+        price: product.price,
+        quantity: quantity + change
+      });
   }
 
   async getCart(): Promise<Observable<ShoppingCart>> {
@@ -49,14 +54,14 @@ export class ShoppingCartService {
   }
 
   addToCart(product: Product) {
-    this.updateItemQuantity(product, 1);
+    this.updateItem(product, 1);
   }
 
   removeFromCart(product: Product) {
-    this.updateItemQuantity(product, -1);
+    this.updateItem(product, -1);
   }
 
-  private async updateItemQuantity(product: Product, change: number) {
+  private async updateItem(product: Product, change: number) {
     const cartId = await this.getOrCreateCartId();
 
     let item$ = await this.getItem(cartId, product.key);

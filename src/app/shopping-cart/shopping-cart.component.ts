@@ -9,9 +9,7 @@ import { ShoppingCartService } from '../shopping-cart.service';
 export class ShoppingCartComponent implements OnInit {
   cart$;
 
-  constructor(private _cartService: ShoppingCartService) {
-
-  }
+  constructor(private _cartService: ShoppingCartService) { }
 
   async ngOnInit() {
     this.cart$ = await this._cartService.getCart();

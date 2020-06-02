@@ -23,7 +23,6 @@ import { AuthGuard } from './auth-guard.service';
 import { AuthAdminGuard } from './auth-admin-guard.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { FormsModule } from '@angular/forms';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductFilterComponent } from './product/product-filter/product-filter.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
@@ -85,8 +84,7 @@ import { ProductQuantityComponent } from './product-quantity/product-quantity.co
         canActivate: [AuthGuard, AuthAdminGuard]
       },
       { path: '**', component: NotFoundComponent }
-    ]),
-    NoopAnimationsModule
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
