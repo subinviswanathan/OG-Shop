@@ -26,6 +26,8 @@ import { FormsModule } from '@angular/forms';
 import { ProductFilterComponent } from './product/product-filter/product-filter.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
+import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
+import { ShippingFormComponent } from './shipping-form/shipping-form.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { ProductQuantityComponent } from './product-quantity/product-quantity.co
     ProductFormComponent,
     ProductFilterComponent,
     ProductCardComponent,
-    ProductQuantityComponent
+    ProductQuantityComponent,
+    ShoppingCartSummaryComponent,
+    ShippingFormComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +65,7 @@ import { ProductQuantityComponent } from './product-quantity/product-quantity.co
 
       { path: 'shopping-cart', component: ShoppingCartComponent },
       { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
-      { path: 'success', component: OrderSuccessComponent, canActivate: [AuthGuard] },
+      { path: 'success/:id', component: OrderSuccessComponent, canActivate: [AuthGuard] },
 
       {
         path: 'admin/orders',
