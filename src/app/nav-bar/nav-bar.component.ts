@@ -15,8 +15,8 @@ export class NavBarComponent implements OnInit {
   isMenuCollapsed = true;
   cart$: Observable<ShoppingCart>;
 
-  constructor(public _auth: AuthService, private _cartService: ShoppingCartService) {
-  }
+  constructor(public _auth: AuthService,
+    private _cartService: ShoppingCartService) { }
   async ngOnInit() {
     this._auth.appUser$
       .subscribe(user => this.appUser = user);

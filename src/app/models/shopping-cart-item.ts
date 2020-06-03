@@ -1,5 +1,3 @@
-import { Product } from './product';
-
 export class ShoppingCartItem {
     title: string;
     imageUrl: string;
@@ -7,7 +5,7 @@ export class ShoppingCartItem {
     key: string;
     quantity: number;
 
-    constructor(init? : Partial<ShoppingCartItem>) { 
+    constructor(init?: Partial<ShoppingCartItem>) {
         Object.assign(this, init);
     }
 

@@ -14,16 +14,15 @@ export class AdminProductComponent implements OnInit, OnDestroy {
   filteredProducts: Product[] = [];
   subscription: Subscription;
 
-  constructor(private _productService: ProductService) {
-    this.subscription = this._productService.getAll()
-      .subscribe(products => this.filteredProducts = this.products = products);
-  }
+  constructor(private _productService: ProductService) { }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
   ngOnInit() {
+    this.subscription = this._productService.getAll()
+      .subscribe(products => this.filteredProducts = this.products = products);
   }
 
   filter(query: string) {
