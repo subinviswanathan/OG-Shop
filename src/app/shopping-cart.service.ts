@@ -12,6 +12,29 @@ import { ShoppingCart } from './models/shopping-cart';
 export class ShoppingCartService {
   constructor(private _db: AngularFireDatabase) { }
 
+  async getCart(): Promise<Observable<ShoppingCart>> {
+    const cartId = await this.getOrCreateCartId();
+    return this._db.object("/shopping-carts/" + cartId)
+      .valueChanges()
+      .pipe(
+        map((x: { items }) => new ShoppingCart(x.items))
+      );
+  }
+
+  async addToCart(product: Product) {
+    this.updateItem(product, 1);
+  }
+
+  async removeFromCart(product: Product) {
+    this.updateItem(product, -1);
+  }
+
+  async clearCart() {
+    let cartId = await this.getOrCreateCartId();
+    this._db.object('/shopping-carts/' + cartId + '/items').remove();
+  }
+
+
   private create() {
     return this._db.list("/shopping-carts").push({
       dateCreated: new Date().getTime(),
@@ -35,13 +58,10 @@ export class ShoppingCartService {
       });
   }
 
-  async getCart(): Promise<Observable<ShoppingCart>> {
-    const cartId = await this.getOrCreateCartId();
-    return this._db.object("/shopping-carts/" + cartId)
-      .valueChanges()
-      .pipe(
-        map((x: { items }) => new ShoppingCart(x.items))
-      );
+  private delete(cartId: string, productId: string) {
+    this._db
+      .object("/shopping-carts/" + cartId + "/items/" + productId)
+      .remove();
   }
 
   private async getOrCreateCartId(): Promise<string> {
@@ -53,20 +73,16 @@ export class ShoppingCartService {
     return result.key;
   }
 
-  addToCart(product: Product) {
-    this.updateItem(product, 1);
-  }
-
-  removeFromCart(product: Product) {
-    this.updateItem(product, -1);
-  }
-
   private async updateItem(product: Product, change: number) {
     const cartId = await this.getOrCreateCartId();
 
     let item$ = await this.getItem(cartId, product.key);
     item$
       .pipe(take(1))
-      .subscribe((item: ShoppingCartItem) => this.update(cartId, product, item && item.quantity, change));
+      .subscribe((item: ShoppingCartItem) => {
+        let quantity = item && (item.quantity + change);
+        if (quantity === 0) this.delete(cartId, product.key);
+        else this.update(cartId, product, item && item.quantity, change)
+      });
   }
 }
