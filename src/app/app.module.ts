@@ -18,15 +18,15 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { environment } from 'src/environments/environment';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthGuard } from './shared/services/auth-guard.service';
-import { AuthAdminGuard } from './auth-admin-guard.service';
+import { AuthAdminGuard } from './admin/services/auth-admin-guard.service';
 import { FormsModule } from '@angular/forms';
 import { ProductFilterComponent } from './product/product-filter/product-filter.component';
 import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
 import { ShippingFormComponent } from './shipping-form/shipping-form.component';
 import { SharedModule } from './shared/shared.module';
-import { AdminProductComponent } from './admin/admin-product/admin-product.component';
-import { AdminOrderComponent } from './admin/admin-order/admin-order.component';
-import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { AdminProductComponent } from './admin/components/admin-product/admin-product.component';
+import { AdminOrderComponent } from './admin/components/admin-order/admin-order.component';
+import { ProductFormComponent } from './admin/components/product-form/product-form.component';
 
 @NgModule({
   declarations: [
