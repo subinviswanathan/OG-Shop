@@ -8,43 +8,29 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { ProductComponent } from './product/product.component';
-import { MyorderComponent } from './myorder/myorder.component';
-import { CheckoutComponent } from './checkout/checkout.component';
-import { OrderSuccessComponent } from './order-success/order-success.component';
 import { HomeComponent } from './home/home.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { environment } from 'src/environments/environment';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { AuthGuard } from './shared/services/auth-guard.service';
 import { FormsModule } from '@angular/forms';
-import { ProductFilterComponent } from './product/product-filter/product-filter.component';
-import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
-import { ShippingFormComponent } from './shipping-form/shipping-form.component';
 import { SharedModule } from './shared/shared.module';
 import { AdminModule } from './admin/admin.module';
+import { ProductComponent } from './shopping/components/product/product.component';
+import { ShoppingModule } from './shopping/shopping.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    ProductComponent,
-    MyorderComponent,
-    CheckoutComponent,
-    OrderSuccessComponent,
     HomeComponent,
     NavBarComponent,
-    ShoppingCartComponent,
     NotFoundComponent,
-    ProductFilterComponent,
-    ShoppingCartSummaryComponent,
-    ShippingFormComponent
   ],
   imports: [
     BrowserModule,
     SharedModule,
     AdminModule,
+    ShoppingModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
@@ -53,12 +39,6 @@ import { AdminModule } from './admin/admin.module';
     RouterModule.forRoot([
       { path: '', component: ProductComponent },
       { path: 'login', component: LoginComponent },
-      { path: 'my-order', component: MyorderComponent },
-      { path: 'products', component: ProductComponent },
-
-      { path: 'shopping-cart', component: ShoppingCartComponent },
-      { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
-      { path: 'success/:id', component: OrderSuccessComponent, canActivate: [AuthGuard] },
       { path: '**', component: NotFoundComponent }
     ])
   ],
