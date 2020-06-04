@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Order } from '../shared/models/order';
 import { Subscription } from 'rxjs';
-import { OrderService } from '../order.service';
+import { OrderService } from '../shared/services/order.service';
 import { AuthService } from '../shared/services/auth.service';
 import { Router } from '@angular/router';
 import { ShoppingCart } from '../shared/models/shopping-cart';

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderService } from '../order.service';
+import { OrderService } from '../shared/services/order.service';
 import { AuthService } from '../shared/services/auth.service';
 import { switchMap } from 'rxjs/operators';
 
