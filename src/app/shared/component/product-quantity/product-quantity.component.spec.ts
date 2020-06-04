@@ -8,9 +8,9 @@ describe('ProductQuantityComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProductQuantityComponent ]
+      declarations: [ProductQuantityComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
