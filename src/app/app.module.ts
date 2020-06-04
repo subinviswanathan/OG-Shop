@@ -12,8 +12,6 @@ import { ProductComponent } from './product/product.component';
 import { MyorderComponent } from './myorder/myorder.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
-import { AdminProductComponent } from './admin/admin-product/admin-product.component';
-import { AdminOrderComponent } from './admin/admin-order/admin-order.component';
 import { HomeComponent } from './home/home.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
@@ -21,12 +19,14 @@ import { environment } from 'src/environments/environment';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthGuard } from './shared/services/auth-guard.service';
 import { AuthAdminGuard } from './auth-admin-guard.service';
-import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { FormsModule } from '@angular/forms';
 import { ProductFilterComponent } from './product/product-filter/product-filter.component';
 import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
 import { ShippingFormComponent } from './shipping-form/shipping-form.component';
 import { SharedModule } from './shared/shared.module';
+import { AdminProductComponent } from './admin/admin-product/admin-product.component';
+import { AdminOrderComponent } from './admin/admin-order/admin-order.component';
+import { ProductFormComponent } from './admin/product-form/product-form.component';
 
 @NgModule({
   declarations: [
