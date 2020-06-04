@@ -7,30 +7,26 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { HomeComponent } from './home/home.component';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { LoginComponent } from './core/components/login/login.component';
 import { environment } from 'src/environments/environment';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { NotFoundComponent } from './core/components/not-found/not-found.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { AdminModule } from './admin/admin.module';
 import { ProductComponent } from './shopping/components/product/product.component';
 import { ShoppingModule } from './shopping/shopping.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    HomeComponent,
-    NavBarComponent,
-    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
     SharedModule,
     AdminModule,
     ShoppingModule,
+    CoreModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
@@ -42,7 +38,6 @@ import { ShoppingModule } from './shopping/shopping.module';
       { path: '**', component: NotFoundComponent }
     ])
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
