@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { AdminProductComponent } from './components/admin-product/admin-product.component';
 import { AdminOrderComponent } from './components/admin-order/admin-order.component';
 import { ProductFormComponent } from './components/product-form/product-form.component';
-import { FormsModule } from '@angular/forms';
 import { SharedModule } from 'shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from 'shared/services/auth-guard.service';
@@ -18,8 +16,6 @@ import { AuthAdminGuard } from './services/auth-admin-guard.service';
     ProductFormComponent,
   ],
   imports: [
-    CommonModule,
-    FormsModule,
     SharedModule,
     RouterModule.forChild([
       {
