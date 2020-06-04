@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { ProductService } from 'src/app/product.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs/operators';
-import { Product } from 'src/app/models/product';
+import { Product } from 'shared/models/product';
 
 @Component({
   selector: 'app-product-form',
