@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CategoryService } from 'src/app/category.service';
+import { CategoryService } from 'shared/services/category.service';
 
 @Component({
   selector: 'app-product-filter',
@@ -12,7 +12,7 @@ export class ProductFilterComponent implements OnInit {
   @Input('categoryParam') categoryParam;
 
   constructor(private _categoryService: CategoryService, ) { }
-  
+
   ngOnInit(): void {
     this.categories$ = this._categoryService.getAll();
   }

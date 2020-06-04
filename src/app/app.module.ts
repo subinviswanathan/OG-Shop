@@ -19,7 +19,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { environment } from 'src/environments/environment';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { AuthGuard } from './auth-guard.service';
+import { AuthGuard } from './shared/services/auth-guard.service';
 import { AuthAdminGuard } from './auth-admin-guard.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { FormsModule } from '@angular/forms';
