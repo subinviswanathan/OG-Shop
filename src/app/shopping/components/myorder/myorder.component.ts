@@ -17,10 +17,7 @@ export class MyorderComponent implements OnInit {
   async ngOnInit() {
     this.order$ = this._auth.user$
       .pipe(
-        switchMap(user => {
-          console.log(user.uid);
-          return this._oService.getOrdersByUser(user.uid)
-        })
+        switchMap(user => this._oService.getOrdersByUser(user.uid))
       );
   }
 
