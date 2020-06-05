@@ -10,18 +10,18 @@ import { switchMap } from 'rxjs/operators';
 })
 export class MyorderComponent implements OnInit {
   userId: string;
+  order$;
 
   constructor(private _oService: OrderService, private _auth: AuthService) { }
 
   async ngOnInit() {
-    this._auth.user$
+    this.order$ = this._auth.user$
       .pipe(
         switchMap(user => {
           console.log(user.uid);
           return this._oService.getOrdersByUser(user.uid)
         })
-      )
-      .subscribe(data => console.log(data));
+      );
   }
 
 }

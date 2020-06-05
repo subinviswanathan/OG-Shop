@@ -1,1 +1,18 @@
-<p>myorder works!</p>
+<table class="table mt-3" *ngIf="order$ | async as orders">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>City</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let order of orders">
+      <td>{{ order.shipping.name }}</td>
+      <td>{{ order.shipping.city }}</td>
+      <td>
+        <a>Edit</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

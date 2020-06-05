@@ -7,12 +7,12 @@ import { OrderService } from 'shared/services/order.service';
   styleUrls: ['./admin-order.component.css']
 })
 export class AdminOrderComponent implements OnInit {
+  order$;
 
   constructor(private _oService: OrderService) { }
 
   ngOnInit() {
-    this._oService.getOrders()
-      .subscribe(item => console.log(item));
+    this.order$ = this._oService.getOrders();
   }
 
 }
